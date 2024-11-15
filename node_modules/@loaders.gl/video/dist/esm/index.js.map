@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["VideoLoader","default","GIFBuilder"],"sources":["../../src/index.ts"],"sourcesContent":["export {VideoLoader} from './video-loader';\n\nexport {default as GIFBuilder} from './gif-builder';\n"],"mappings":"AAAA,SAAQA,WAAW,QAAO,gBAAgB;AAE1C,SAAQC,OAAO,IAAIC,UAAU,QAAO,eAAe"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"video-loader.d.ts","sourceRoot":"","sources":["../src/video-loader.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,gBAAgB,EAAE,aAAa,EAAC,MAAM,0BAA0B,CAAC;AAC9E,OAAO,UAAU,MAAM,2BAA2B,CAAC;AAWnD,MAAM,MAAM,kBAAkB,GAAG,aAAa,GAAG;IAC/C,KAAK,EAAE,EAAE,CAAC;CACX,CAAC;AAMF,eAAO,MAAM,WAAW;;;;;;;;;CAYvB,CAAC;AAEF,eAAO,MAAM,qBAAqB,EAAE,gBAA8B,CAAC"}

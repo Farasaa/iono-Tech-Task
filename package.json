@@ -1,0 +1,60 @@
+{
+  
+
+  "dependencies": {
+  
+
+    
+
+  "3d-assets": "^0.8.0",
+  
+
+    
+
+  "gsap": "^3.12.5",
+  
+
+    
+
+  "kepler.gl": "^3.0.0",
+  
+
+    
+
+  "stats.js": "^0.17.0",
+  
+
+    
+
+  "three": "^0.170.0",
+  
+
+    
+
+  "three-stdlib": "^2.34.0"
+  
+
+  },
+  
+
+  "devDependencies": {
+  
+
+    
+
+  "vite": "^5.4.11"
+  
+
+  },
+  
+
+  "scripts": {
+  
+
+    
+
+  "dev": "vite"
+  
+
+  }
+}
