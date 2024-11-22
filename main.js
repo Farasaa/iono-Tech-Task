@@ -13,7 +13,7 @@ const scene = new THREE.Scene();
 
 // Set up the Camera
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 8, 20);
+camera.position.set(0, 8, 25);
 camera.lookAt(0, 2, 0);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -119,41 +119,39 @@ const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
 scene.add(ambientLight);
 
 
-const roomLights = new Map(); // Correctly initialize the Map
+const roomLights = new Map(); 
 
-// Create directional spotlights for the six rooms
-// Create directional spotlights for the six rooms
-// Updated light colors for brighter and stronger effect
+
 const lightColors = [
-    0x00ffff, // Cyan for room 1
-    0xff00ff, // Magenta for room 2
-    0xffff00, // Yellow for room 3
-    0x00ff00, // Green for room 4
-    0xff8000, // Orange for room 5
-    0xff0000  // Bright red for room 6
+    0x00ffff, 
+    0xff00ff, 
+    0xffff00, 
+    0x00ff00, 
+    0xff8000, 
+    0xff0000  
 ]; 
 
 [roomOne, roomTwo, roomThree, roomFour, roomFive, roomSix].forEach((room, index) => {
-    const light = new THREE.SpotLight(lightColors[index], 5, 10, Math.PI / 2, 0.5, 2); // Increased intensity to 5 for stronger light
-    light.position.set(5, room.position.y + 1, 0); // Default light position above the room
+    const light = new THREE.SpotLight(lightColors[index], 5, 10, Math.PI / 2, 0.5, 2); 
+    light.position.set(5, room.position.y + 1, 0); 
     
-    // Set default target for light to the room's center
+    
     light.target.position.copy(room.position);
 
-    // For rooms 2, 4, and 6, we reverse the direction of the light
-    if (index === 1 || index === 3 || index === 5) {  // Room 2 (index 1), Room 4 (index 3), Room 6 (index 5)
-        light.position.set(-5, room.position.y + 1, 0); // Change light position to the opposite side
-        light.target.position.set(-room.position.x, room.position.y, room.position.z); // Set the target to the opposite side
+    
+    if (index === 1 || index === 3 || index === 5) {  
+        light.position.set(-5, room.position.y + 1, 0); 
+        light.target.position.set(-room.position.x, room.position.y, room.position.z); 
     }
 
-    scene.add(light.target); // Add the light's target to the scene
-    scene.add(light); // Add the spotlight to the scene
-    roomLights.set(room, light); // Map the room to its light
+    scene.add(light.target); 
+    scene.add(light); 
+    roomLights.set(room, light); 
 });
 
 
 
-// Roof (Top Face with texture)
+// Roof 
 const roofGeometry = new THREE.BoxGeometry(7, 0.4, 8);
 const roof = new THREE.Mesh(roofGeometry, roofMaterial);
 roof.position.set(3, 6.5, 0);
@@ -169,21 +167,21 @@ roof2.rotation.z = Math.PI / 7;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Function to handle mouse click for toggling light and floor texture
+// handle mouse click
 function onMouseClick(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
-    // Combine all clickable objects into one array
+    
     const allObjects = [floorOne, floorTwo, floorThree, roomOne, roomTwo, roomThree, roomFour, roomFive, roomSix];
     const intersects = raycaster.intersectObjects(allObjects);
 
     if (intersects.length > 0) {
         const clickedObject = intersects[0].object;
 
-        // Check if a floor was clicked
+        
         if ([floorOne, floorTwo, floorThree].includes(clickedObject)) {
             const newMaterial = clickedObject.material === floorMaterial ? newFloorMaterial : floorMaterial;
             gsap.to(clickedObject.material, {
@@ -196,12 +194,12 @@ function onMouseClick(event) {
             });
         }
 
-        // Check if a room was clicked
+        
         if (roomLights.has(clickedObject)) {
             const light = roomLights.get(clickedObject);
-            // Toggle light intensity smoothly
+            
             gsap.to(light, {
-                intensity: light.intensity === 0 ? 2 : 0, // Turn on or off
+                intensity: light.intensity === 0 ? 2 : 0, 
                 duration: 1
             });
         }

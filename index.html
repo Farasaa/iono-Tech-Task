@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>iono-Tech Task</title>
-		<style>
-			body { margin: 0; }
-		</style>
-	</head>
-	<body>
-		<script type="module" src="/main.js"></script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>Kepler & Three.js Integration</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #kepler-map {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            width: 20%;
+            height: 200px;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; 
+        }
+    </style>
+</head>
+<body>
+    
+    <iframe
+        id="kepler-map"
+        src="https://vocal-pony-8c60c3.netlify.app/"
+        style="border: none;">
+    </iframe>
+
+    
+    <script type="module" src="/main.js"></script>
+</body>
 </html>
